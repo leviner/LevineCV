@@ -1,0 +1,191 @@
+%
+% Short form CV for Robert Levine
+%
+% Modified from NSF Biographical Sketch of Dr. Harriet Alexander
+%
+
+\documentclass[svgnames,12pt,a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\renewcommand\thesection{(\alph{section})}
+\renewcommand\thesubsection{(\alph{subsection})}
+\usepackage{calc}
+
+\usepackage{lastpage}
+%\newcommand{\pageoflastpage}{Page {\thepage} of \pageref*{LastPage}}
+%\newcommand{\pageoflastpage}{{\thepage} of \pageref*{LastPage}}
+\newcommand{\pageoflastpage}{}
+
+% Redefine the plain pagestyle for the title page
+\makeatletter
+\let\oldps@plain\ps@plain
+\renewcommand{\ps@plain}{\oldps@plain%
+\renewcommand{\@evenfoot}{\hfil\pageoflastpage\hfil}%
+\renewcommand{\@oddfoot}{\@evenfoot}}
+\makeatother
+
+\usepackage{xspace}
+
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{varioref}
+\usepackage[%
+        colorlinks=true,urlcolor=,
+        pdfpagelabels=true,hypertexnames=true,
+        plainpages=false,naturalnames=true,
+        ]{hyperref}
+%
+\usepackage{url}
+\newcommand\doilink[1]{\href{http://dx.doi.org/#1}{#1}}
+\newcommand\doi[1]{doi:\doilink{#1}}
+
+\makeatletter
+\newlength{\bibhang}
+\setlength{\bibhang}{1em}
+\newlength{\bibsep}
+ {\@listi \global\bibsep\itemsep \global\advance\bibsep by\parsep}
+\newlist{bibsection}{itemize}{3}
+\setlist[bibsection]{label=,leftmargin={\bibhang+\widthof{[9]}},%
+        itemindent=-\bibhang,
+        itemsep=\bibsep,parsep=\z@,partopsep=0pt,
+        topsep=0pt}
+\newlist{bibenum}{enumerate}{3}
+\setlist[bibenum]{label=\textbf{\arabic*.},leftmargin={\bibhang+\widthof{[999]}},
+        itemindent=-\bibhang,
+        itemsep=\bibsep,parsep=\z@,partopsep=0pt,
+        topsep=0pt}
+\let\oldendbibenum\endbibenum
+\def\endbibenum{\oldendbibenum\vspace{-.6\baselineskip}}
+\let\oldendbibsection\endbibsection
+\def\endbibsection{\oldendbibsection\vspace{-.6\baselineskip}}
+\makeatother
+
+
+\usepackage[resetlabels]{multibib}
+\newcites{Relevant}{In preparation}
+\newcites{Other}{Published}
+\newcites{Conference}{Relevant Conference Abstracts}
+\let\OLDthebibliography\thebibliography
+\renewcommand\thebibliography[1]{
+  \OLDthebibliography{#1}%
+  \setlength{\parskip}{0pt}%
+  \setlength{\labelwidth}{0pt}%
+  \setlength{\labelsep}{4pt}%
+  \setlength{\itemindent}{0em}%
+  \setlength{\itemsep}{4pt}%
+  \setlength{\leftmargin}{\bibhang+\widthof{[999]}}%
+}
+
+\usepackage{sectsty}
+\subsubsectionfont{\normalfont\itshape}
+
+\usepackage{etoolbox}
+\BeforeBeginEnvironment{thebibliography}{%
+  \let\origsection\section% save the original definition of \section
+  \let\section\subsubsection%  make \section behave like \subsection
+
+}
+\AfterEndEnvironment{thebibliography}{%
+  \let\section\origsection% restore the original definition of \section
+}
+%Number bibliography with periods
+
+\makeatletter
+\renewcommand\@biblabel[1]{\textbf{#1.}}
+\makeatother
+% bold name in citations or wherever it appears
+\def\FormatName#1{%
+  \def\myname{Levine R}%
+  \edef\name{#1}%
+  \ifx\name\myname
+    \textbf{#1}%
+  \else
+    #1%
+  \fi
+}
+
+
+\date{}
+\author{}
+
+\hypersetup{%
+        pdfsubject={Short form CV for Robert Levine},
+        pdfauthor={~Robert ~Levine},
+        pdftitle={Short form CV for ~Robert ~Levine},
+        pdfkeywords={}
+        }
+
+\newcommand{\ie}{i.e.\xspace}
+\newcommand{\eg}{e.g.\xspace}
+
+\begin{document}
+%% Biographic information
+\section*{}
+\textbf{\large{Robert Levine}}\\
+Ph.D. Candidate\\
+School of Oceanography\\
+University of Washington\\
+E-mail: LevineR@uw.edu\\
+\vspace*{-.7cm}
+
+\subsection*{\textsc{Professional Preparation}}
+\begin{tabular}{ l l l l }
+ University of Washington & Seattle, WA & Biological Oceanography & Ph.D. (expected 2021) \\
+ Cornell University & Ithaca, NY & Geological Sciences & M.S., 2014 \\
+ Cornell University & Ithaca, NY & Environmental Sciences & B.S., 2012 \\
+\end{tabular}
+\vspace*{-.5cm}
+
+\subsection*{\textsc{Appointments}}
+\vspace*{-.2cm}
+\begin{itemize}[label={\quad 9999--9999:},leftmargin=*,itemsep=-3pt]
+\item[2016--present]
+    \textbf{Graduate Research Assistant},
+    School of Oceanography, University of Washington, Seattle, WA
+\item[2014--2016]
+    \textbf{Advanced Sampling Technology Contractor},
+    NOAA AFSC, Seattle, WA
+\end{itemize}
+
+\vspace*{-.7cm}
+\subsection*{\textsc{Publications}}
+\vspace*{-.2cm}
+\nociteRelevant{Levine2020}
+\bibliographystyleRelevant{cv}
+\bibliographyRelevant{pubs}
+\vspace*{-.8cm}
+\nociteOther{Huntington2020, DeRobertis2018}
+\bibliographystyleOther{cv}
+\bibliographyOther{pubs}
+
+\vspace*{-.7cm}
+\subsection*{\textsc{Presentations}}
+\vspace*{-.1cm}
+\nociteConference{OSM2020,OBS2019, AMSS2019, ESSAS2018, OSM2014}
+\bibliographystyleConference{cv}
+\bibliographyConference{conf}
+
+\vspace*{-.5cm}
+\subsection*{\textsc{Synergistic Activities}}
+
+\begin{bibenum}[itemsep=4pt]
+
+    \item \textbf{Teaching:} Guest lecturer, Foundation of Ocean Sensors, UW (2019); Guest lecturer, Marine Zooplankton Ecology, UW (2019); Teaching assistant, Foundation of Ocean Sensors, UW (2018); Teaching assistant, Introductory Oceanography, Cornell University (2013, 2012); Teaching assistant, Marine Bioacoustics Workshop, Friday Harbor Laboratories (2013); Teaching assistant, Satellite Remote Sensing, Cornell University (2013, 2011)
+
+    \item \textbf{Awards:} Best Student Poster Presentation, Alaska Marine Science Symposium (2020); Science Communication Fellow, Pacific Science Center (2018); Graduate Conference Grant, Cornell University (2014); Bryan Isaacks Excellence in Teaching Award, Cornell University (2014) 
+
+    \item \textbf{Service:} \textit{(Conferences)} Session Chair Alaska Marine Science Symposium (2019); \textit{(University)} Series organizer, Beyond Academia Speaker Series, UW (2020); Graduate representative, College of the Environment Student Advisory Council, UW (2019-2020);Senator, Graduate and Professional Student Senate, UW (2017-2020); Officer, Academic and Recreational Graduate Oceanographers, UW (2019)
+    
+    \item \textbf{Workshops and Professional Development Programs:}  Principles and Methods of Broadband/Wideband Technologies ICES Training Cours (2019); OOI Data Labs Development Workshop (2019); OOI Early Career Scientist Interdiscipinary Workshop (2019); OOI Early Career Biology Data Workshop (2018); UW Cabled Array Hack Week (2018); Friday Harbor Laboratories Bioacoustical Oceanography Workshop (2011)
+    
+    \item \textbf{Outreach:} Instructor/developer, PublicSensors.org (2020); Meet a Polar Scientist, Pacific Science Center (2018--2020); UW College of the Environment Open House (2019); Polar Science Weekend, Pacific Science Center (2018, 2019); Ocean sensor high school program (2017, 2018);
+
+\end{bibenum}
+
+% \subsection*{\textsc{References}}
+% \begin{bibenum}[itemsep=4pt]
+%
+% \end{bibenum}
+
+\end{document}

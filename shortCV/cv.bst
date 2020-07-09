@@ -173,11 +173,10 @@ FUNCTION {output.check}
 
 FUNCTION {output.bibitem}
 { newline$
-  "\cvitem{" write$
-  year write$
+  "\bibitem{" write$
+  cite$ write$
   "}" write$
   newline$
-  "{" write$
   ""
   before.all 'output.state :=
 }
@@ -186,7 +185,6 @@ FUNCTION {fin.entry}
 { add.period$
   write$
   newline$
-  "}" write$
 }
 
 FUNCTION {new.block}
@@ -379,8 +377,8 @@ FUNCTION {format.editors}
 }
 
 FUNCTION {format.title}
-% BMB hack -- add period, changed 7/20 to remove: "t" change.case$
-{ title add.period$
+% BMB hack -- add period
+{ title "t" change.case$ add.period$
 }
 
 
@@ -706,7 +704,6 @@ FUNCTION {article}
     }
     { format.article.crossref output.nonnull
       format.pages output add.period$
-      format.doi output add.period$
     }
   if$
   new.block
@@ -841,11 +838,14 @@ FUNCTION {conference}
   format.title "title" output.check  
   %journal emphasize "journal" output.check
   journal address comma.connect output add.period$
-  month output year output add.period$  
+  format.dateconf "year" output.check  add.period$  
   new.block
   note output
   fin.entry
 }
+
+
+
 
 
 FUNCTION {manual}
@@ -1021,223 +1021,6 @@ MACRO {tcs} {"Theoretical Computer Science"}
 
 READ
 
-
-FUNCTION {sortify}
-{ purify$
-  "l" change.case$
-}
-
-INTEGERS { len }
-
-FUNCTION {chop.word}
-{ 's :=
-  'len :=
-  s #1 len substring$ =
-    { s len #1 + global.max$ substring$ }
-    's
-  if$
-}
-
-FUNCTION {sort.format.names}
-{ 's :=
-  #1 'nameptr :=
-  ""
-  s num.names$ 'numnames :=
-  numnames 'namesleft :=
-    { namesleft #0 > }
-    { nameptr #1 >
-        { "   " * }
-        'skip$
-      if$
-      s nameptr "{vv{ } }{ll{ }}{  ff{ }}{  jj{ }}" format.name$ 't :=
-      nameptr numnames = t "others" = and
-        { "et al" * }
-        { t sortify * }
-      if$
-      nameptr #1 + 'nameptr :=
-      namesleft #1 - 'namesleft :=
-    }
-  while$
-}
-
-FUNCTION {sort.format.title}
-{ 't :=
-  "A " #2
-    "An " #3
-      "The " #4 t chop.word
-    chop.word
-  chop.word
-  sortify
-  #1 global.max$ substring$
-}
-
-FUNCTION {sort.format.month}
-{ 't :=
-  t #1 #3 substring$ "l" change.case$ "jan" =
-    { "01"  }
-    { t #1 #3 substring$ "l" change.case$ "feb" =
-      { "02"  }
-      { t #1 #3 substring$ "l" change.case$ "mar" =
-        { "03"  }
-        { t #1 #3 substring$ "l" change.case$ "apr" =
-          { "04"  }
-          { t #1 #3 substring$ "l" change.case$ "may" =
-            { "05"  }
-            { t #1 #3 substring$ "l" change.case$ "jun" =
-              { "06"  }
-              { t #1 #3 substring$ "l" change.case$ "jul" =
-                { "07"  }
-                { t #1 #3 substring$ "l" change.case$ "aug" =
-                  { "08"  }
-                  { t #1 #3 substring$ "l" change.case$ "sep" =
-                    { "09"  }
-                    { t #1 #3 substring$ "l" change.case$ "oct" =
-                      { "10"  }
-                      { t #1 #3 substring$ "l" change.case$ "nov" =
-                        { "11"  }
-                        { t #1 #3 substring$ "l" change.case$ "dec" =
-                          { "12"  }
-                          { "00"  } % No match
-                        if$
-                        }
-                      if$
-                      }
-                    if$
-                    }
-                  if$
-                  }
-                if$
-                }
-              if$
-              }
-            if$
-            }
-          if$
-          }
-        if$
-        }
-      if$
-      }
-    if$
-    }
-  if$
-}
-
-FUNCTION {year.sort}
-{ year empty$
-    { key empty$
-        { "to sort, need year or key in " cite$ * warning$
-          ""
-        }
-        { key sortify }
-      if$
-    }
-    { year sort.format.names }
-  if$
-}
-
-FUNCTION {author.sort}
-{ author empty$
-    { key empty$
-        { "to sort, need author or key in " cite$ * warning$
-          ""
-        }
-        { key sortify }
-      if$
-    }
-    { author sort.format.names }
-  if$
-}
-
-FUNCTION {author.editor.sort}
-{ author empty$
-    { editor empty$
-        { key empty$
-            { "to sort, need author, editor, or key in " cite$ * warning$
-              ""
-            }
-            { key sortify }
-          if$
-        }
-        { editor sort.format.names }
-      if$
-    }
-    { author sort.format.names }
-  if$
-}
-
-FUNCTION {author.organization.sort}
-{ author empty$
-    { organization empty$
-        { key empty$
-            { "to sort, need author, organization, or key in " cite$ * warning$
-              ""
-            }
-            { key sortify }
-          if$
-        }
-        { "The " #4 organization chop.word sortify }
-      if$
-    }
-    { author sort.format.names }
-  if$
-}
-
-FUNCTION {editor.organization.sort}
-{ editor empty$
-    { organization empty$
-        { key empty$
-            { "to sort, need editor, organization, or key in " cite$ * warning$
-              ""
-            }
-            { key sortify }
-          if$
-        }
-        { "The " #4 organization chop.word sortify }
-      if$
-    }
-    { editor sort.format.names }
-  if$
-}
-
-FUNCTION {presort}
-{ type$ "book" =
-  type$ "inbook" =
-  or
-    'author.editor.sort
-    { type$ "proceedings" =
-        'editor.organization.sort
-        { type$ "manual" =
-            'author.organization.sort
-            'year.sort
-          if$
-        }
-      if$
-    }
-  if$
-  "    "
-  *
-  month field.or.null
-  sort.format.month
-  *
-  "    "
-  *
-  author field.or.null
-  sort.format.names
-  *
-  "    "
-  *
-  title field.or.null
-  sort.format.title
-  *
-  #1 entry.max$ substring$
-  'sort.key$ :=
-}
-
-ITERATE {presort}
-
-SORT
-
 STRINGS { longest.label }
 
 INTEGERS { number.label longest.label.width }
@@ -1264,17 +1047,22 @@ EXECUTE {initialize.longest.label}
 ITERATE {longest.label.pass}
 
 FUNCTION {begin.bib}
-{ 
+{ preamble$ empty$
+    'skip$
+    { preamble$ write$ newline$ }
+  if$
+  "\begin{thebibliography}{"  longest.label  * "}" * write$ newline$
 }
 
 EXECUTE {begin.bib}
 
 EXECUTE {init.state.consts}
 
-REVERSE {call.type$}
+ITERATE {call.type$}
 
 FUNCTION {end.bib}
 { newline$
+  "\end{thebibliography}" write$ newline$
 }
 
 EXECUTE {end.bib}
