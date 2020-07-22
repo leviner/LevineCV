@@ -1,0 +1,36 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{csvsimple}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage{enumitem}
+
+
+\begin{document}
+\begin{center}
+{\Large Robert Levine} 
+\medskip\\
+List of Coursework\\ \& \\ Fulfillment of Requirements for Research Fish Biologist
+\end{center}
+\subsubsection*{Basic Requirements}
+
+1. Degree in biology or related fields
+\medskip\\ B.S. in Environmental Science, Cornell University\\
+M.S. in Geological Sciences, Cornell University\\
+Ph.D. in Biological Oceanography, University of Washington\\
+
+\noindent2. 30 semester hours in biological and aquatic sciences %, including:
+%\begin{itemize}[noitemsep]
+%\item{15 semester hours in zoology}
+%\item{6 semester hours in fisheries biology}
+%\end{itemize}
+and 15 semester hours in the physical and mathematical sciences (denoted by *).
+\medskip\\Total hours earned in biological and aquatic sciences: 47\\
+%Total hours earned in zoology: \\
+%Total hours earned in fisheries biology: \\
+Total hours earned in physical and mathematical sciences: 31.5\\
+Relevant courses:\\
+
+\csvautobooktabular[table head=\hline Course & Title & Institution & Cr\\\hline,
+    table foot=\\\hline]{courseList.csv}
+\end{document}
