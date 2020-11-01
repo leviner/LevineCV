@@ -5,7 +5,7 @@
 \moderncvcolor{grey}
 \usepackage[scale=0.8]{geometry}
 \usepackage{multibib}
-\newcites{ipr,pr,pend,nr,dp}{{InvitedPresentations},{conference},{inprep},{NonRefereed},{departmental}}
+\newcites{ipr,pr,pend,nr,dp,data}{{InvitedPresentations},{conference},{inprep},{NonRefereed},{departmental}, {datasets}}
       
 % bold name in citations or wherever it appears
 \def\FormatName#1{%
@@ -105,6 +105,7 @@
 
 %%%------------------------GRANTS-----------------------%%%
 \section{Funding and Grants}
+\cvitem{2020}{Diversity Funding Award, \textit{UW College of the Environment}}
 \cvitem{2014}{Graduate Conference Grant, \textit{Cornell University}}
 
 %%%------------------------AWARDS-----------------------%%%
@@ -112,6 +113,14 @@
 \cvitem{2020}{Best Student Poster Presentation, \textit{Alaska Marine Science Symposium}}
 \cvitem{2018}{Science Communication Fellow, \textit{Pacific Science Center}}
 \cvitem{2014}{Bryan Isaacks Excellence in Teaching Award, \textit{Cornell University}}
+
+%%%--------------------Authored Datasets-----------------------%%%
+\section{Authored Software and Datasets}
+\renewcommand*{\bibliographyhead}[1]{\subsection{datasets}}
+\nocitedata{*}
+\bibliographystyledata{cv}
+\bibliographydata{datasets}
+
 
 %%%------------------------PROFESSIONAL DEVELOPMENT -----------------------%%%
 \section{Workshops and Training Courses}
