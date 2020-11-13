@@ -387,9 +387,10 @@ FUNCTION {format.title}
 FUNCTION {format.doi}
 { doi empty$
     { "" }
-    { new.block "doi:" doi * "" * }
+    { new.block "\httplink{dx.doi.org/" doi * "}" * }
   if$
 }
+
 
 
 FUNCTION {n.dashify}
