@@ -8,6 +8,12 @@
 \usepackage{multibib}
 \newcites{ipr,pr,pend,nr,dp,data}{{InvitedPresentations},{conference},{inprep},{NonRefereed},{departmental}, {datasets}}
 
+%\renewcommand*\namefont{\fontfamily{ppl}\fontsize{16}{16}\selectfont}
+%\renewcommand*\titlefont{\fontfamily{ppl}\fontsize{12}{12}\selectfont}
+%\renewcommand*\addressfont{\fontfamily{ppl}\selectfont}
+%\renewcommand*\sectionfont{\fontfamily{ppl}\fontsize{12}{12}\selectfont}
+%\renewcommand{\sfdefault}{ppl}
+
 % bold name in citations or wherever it appears
 \def\FormatName#1{%
   \def\myname{Levine R}%
@@ -23,7 +29,6 @@
 
 %%%---- personal details----%%%
 %\title{CV}
-
 \address{1503 NE Boat St.}{Seattle, WA 98115}{}%
 \phone[home]{+1~(914)~391~9490}
 \email{LevineR@uw.edu}
@@ -32,22 +37,24 @@
 \social[github]{leviner}
 
 \begin{document}
-%%%% Set last updated footnote page 1
-\begin{tikzpicture}[remember picture,overlay]
-	\node[anchor=south, yshift=0.8cm, xshift=6cm] at (current page.south) {\textcolor{color1}{\textit{Last updated \today}}};
-\end{tikzpicture}
 \makecvtitle
+%%%% Set last updated footnote page 1
+%\begin{tikzpicture}[remember picture,overlay]
+%	\node[anchor=south, yshift=0.8cm, xshift=6cm] at (current page.south) {\textcolor{color1}{\textit{Last updated \today}}};
+%\end{tikzpicture}
+
 %%%------------------------EDUCATION-----------------------%%%
 \section{Education}
-\cventry{2016--\textit{present}}{PhD, Oceanography}{University of Washington}{Seattle, WA}{}{Chair: Daniel Gr\"{u}nbaum}{}
-\cventry{2014}{MS, Geological Sciences}{Cornell University}{Ithaca, NY}{}{Chair: Charles Greene}{}{}
+\cventry{2016--\textit{present}}{PhD, Oceanography}{University of Washington}{Seattle, WA}{}{}{}
+\cventry{2014}{MS, Geological Sciences}{Cornell University}{Ithaca, NY}{}{}{}{}
 \cventry{2012}{BS, Environmental Science}{Cornell University}{Ithaca, NY}{}{}{}{}
 
 %%%------------------------EXPERIENCE-----------------------%%%
-\section{Academic Positions}
-\cventry{2016--\textit{present}}{Graduate Research Assistant}{University of Washington School of Oceanography}{Seattle, WA}{}{}
+%\section{Academic Positions}
+%\cventry{2016--\textit{present}}{Graduate Research Assistant}{University of Washington School of Oceanography}{Seattle, WA}{}{}
 
-\section{Professional Positions}
+\section{Professional Experience}
+\cventry{2016--\textit{present}}{Graduate Research Assistant}{UW School of Oceanography}{Seattle, WA}{}{}
 \cventry{2014--2016}{Advanced Sampling Technology Contractor}{Ocean Associates, Incorporated (Contracted to NOAA Alaska Fisheries Science Center)}{Seattle, WA}{}{}
 
 %%%------------------------PUBLICATIONS-----------------------%%%
@@ -95,6 +102,7 @@
 
 %%%------------------------TEACHING-----------------------%%%
 \section{Teaching Experience}
+\cventry{Spring 2021}{Guest Lecturer}{Arctic Change}{UW School of Oceanography}{}{Role of sea ice in Pacific Arctic fisheries.}
 \cventry{Winter 2019}{Guest Lecturer}{Foundations of Ocean Sensors}{UW School of Oceanography}{}{Microcontroller activity to measure speed of sound and conduct bathymetric survey.}
 \cventry{Spring 2018}{Guest Lecturer}{Marine Zooplankton Ecology}{UW School of Oceanography}{}{Application of active acoustics for zooplankton ecology.}
 \cventry{Winter 2018}{Teaching Assistant}{Foundations of Ocean Sensors}{UW School of Oceanography}{}{Assisted with course activities and designed module using ultrasonic acoustic sensors.}
