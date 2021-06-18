@@ -1,0 +1,29 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{csvsimple}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage{enumitem}
+
+
+\begin{document}
+\begin{center}
+{\Large Robert Levine} 
+\medskip\\
+List of Coursework\\ \& \\ Fulfillment of Requirements for Oceanography
+\end{center}
+\subsubsection*{Basic Requirements}
+
+1. Degree in oceanography or related fields
+\medskip\\ B.S. in Environmental Science, Cornell University\\
+M.S. in Geological Sciences, Cornell University\\
+Ph.D. in Biological Oceanography, University of Washington\\
+
+\noindent2. 44 semester hours in oceanography or a related discipline such as physics, meteorology, geophysics, mathematics, chemistry, engineering, geology, or biology
+
+\medskip\\\noindent Total hours earned in relevant coursework: 89.5\\
+Relevant courses:\\
+
+\csvautobooktabular[table head=\hline Course & Title & Institution & Cr\\\hline,
+    table foot=\\\hline]{courseList_ocean.csv}
+\end{document}
