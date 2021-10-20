@@ -44,8 +44,9 @@
 %\end{tikzpicture}
 
 %%%------------------------EDUCATION-----------------------%%%
+\vspace{-7mm}
 \section{Education}
-\cventry{2021 (\textit{Expected})}{PhD, Oceanography}{University of Washington}{Seattle, WA}{}{}{}
+\cventry{2021}{PhD, Oceanography}{University of Washington}{Seattle, WA (\textit{Expected})}{}{}{}
 \cventry{2014}{MS, Geological Sciences}{Cornell University}{Ithaca, NY}{}{}{}{}
 \cventry{2012}{BS, Environmental Science}{Cornell University}{Ithaca, NY}{}{}{}{}
 
@@ -59,13 +60,6 @@
 
 %%%------------------------PUBLICATIONS-----------------------%%%
 \section{Publications}
-%% Peer reivewed %%
-% UNCOMMENT IF NEEDED 
-\subsection{\textit{In Preparation}}% UNCOMMENT IF NEEDED 
-\renewcommand*{\bibliographyhead}[1]{\subsection{In Preparation}}
-\nocitepend{*}
-\bibliographystylepend{cv}
-\bibliographypend{inprep}
 
 %% Peer reivewed %%
 \renewcommand*{\bibliographyhead}[1]{\subsection{Peer-reviewed}}
@@ -74,7 +68,15 @@
 \bibliographystyle{cv}
 \bibliography{publications}
 
-%% Peer reivewed %%
+%% In prep %%
+% UNCOMMENT IF NEEDED 
+\subsection{\textit{In Preparation}}% UNCOMMENT IF NEEDED 
+\renewcommand*{\bibliographyhead}[1]{\subsection{In Preparation}}
+\nocitepend{*}
+\bibliographystylepend{cv}
+\bibliographypend{inprep}
+
+%% Non-refereed %%
 \renewcommand*{\bibliographyhead}[1]{\subsection{Non-refereed}}
 \subsection{\textit{Non-refereed}}
 \nocitenr{*}
