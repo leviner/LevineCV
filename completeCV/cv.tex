@@ -1,4 +1,4 @@
-\documentclass[11pt,a4paper,sans]{moderncv}        %
+\documentclass[10pt,a4paper,sans]{moderncv}        %
 
 % load packages
 \moderncvstyle{classic}
@@ -7,6 +7,11 @@
 \usepackage[scale=0.8]{geometry}
 \usepackage{multibib}
 \newcites{ipr,pr,pend,nr,dp,data}{{InvitedPresentations},{conference},{inprep},{NonRefereed},{departmental}, {datasets}}
+
+%% FOR VITAE
+%\usepackage{mathpazo}
+%\renewcommand{\sfdefault}{ppl}
+%\newcommand{\size}[2]{{\fontsize{#1}{0}\selectfont#2}}
 
 %\renewcommand*\namefont{\fontfamily{ppl}\fontsize{16}{16}\selectfont}
 %\renewcommand*\titlefont{\fontfamily{ppl}\fontsize{12}{12}\selectfont}
@@ -29,7 +34,7 @@
 
 %%%---- personal details----%%%
 %\title{CV}
-\address{1503 NE Boat St.}{Seattle, WA 98115}{}%
+\address{1013 NE 40th St.}{Seattle, WA 98105}{}%
 \phone[home]{+1~(914)~391~9490}
 \email{LevineR@uw.edu}
 \homepage{RobertMLevine.com}
@@ -37,6 +42,7 @@
 \social[github]{leviner}
 
 \begin{document}
+
 \makecvtitle
 %%%% Set last updated footnote page 1
 %\begin{tikzpicture}[remember picture,overlay]
@@ -44,9 +50,13 @@
 %\end{tikzpicture}
 
 %%%------------------------EDUCATION-----------------------%%%
+%\begin{center}
+%    \size{14}{\textbf{VITAE}}
+%\end{center}
+
 \vspace{-7mm}
 \section{Education}
-\cventry{2021}{PhD, Oceanography}{University of Washington}{Seattle, WA (\textit{Expected})}{}{}{}
+\cventry{2021}{PhD, Oceanography}{University of Washington}{Seattle, WA}{}{}{}
 \cventry{2014}{MS, Geological Sciences}{Cornell University}{Ithaca, NY}{}{}{}{}
 \cventry{2012}{BS, Environmental Science}{Cornell University}{Ithaca, NY}{}{}{}{}
 
@@ -55,7 +65,8 @@
 %\cventry{2016--\textit{present}}{Graduate Research Assistant}{University of Washington School of Oceanography}{Seattle, WA}{}{}
 
 \section{Professional Experience}
-\cventry{2016--\textit{present}}{Graduate Research Assistant}{UW School of Oceanography}{Seattle, WA}{}{}
+\cventry{2022--}{Postdoctoral Scholar}{UW Applied Physics Laboratory}{Seattle, WA}{}{}
+\cventry{2016--2021}{Graduate Research Assistant}{UW School of Oceanography}{Seattle, WA}{}{}
 \cventry{2014--2016}{Advanced Sampling Technology Contractor}{Ocean Associates, Incorporated (Contracted to NOAA Alaska Fisheries Science Center)}{Seattle, WA}{}{}
 
 %%%------------------------PUBLICATIONS-----------------------%%%
@@ -70,7 +81,7 @@
 
 %% In prep %%
 % UNCOMMENT IF NEEDED 
-\subsection{\textit{In Preparation}}% UNCOMMENT IF NEEDED 
+\subsection{\textit{Upcoming}}% UNCOMMENT IF NEEDED 
 \renewcommand*{\bibliographyhead}[1]{\subsection{In Preparation}}
 \nocitepend{*}
 \bibliographystylepend{cv}
@@ -186,10 +197,10 @@
 %\cvitem{\textbf{Languages}}{}
 
 %%%--------------------Authored Datasets-----------------------%%%
-\section{Authored Software and Datasets}
-\renewcommand*{\bibliographyhead}[1]{\subsection{datasets}}
-\nocitedata{*}
-\bibliographystyledata{cv}
-\bibliographydata{datasets}
+%\section{Authored Software and Datasets}
+%\renewcommand*{\bibliographyhead}[1]{\subsection{datasets}}
+%\nocitedata{*}
+%\bibliographystyledata{cv}
+%\bibliographydata{datasets}
 
 \end{document}
